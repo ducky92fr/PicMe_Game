@@ -1,0 +1,46 @@
+/* body {
+  border : 1px solid;
+  width : 90vw;
+  height: 100vh;
+  margin-left: 20px;
+} */
+.game_window{
+  display:flex;
+  justify-content: space-between;
+}
+#tapis{
+  border: 1px solid;
+  height : 80vh;
+  width: 10vw;
+  margin-top: 100px;
+}
+#picture_are{
+  border : 1px solid;
+  height: 80vh;
+  width : 70vw;
+  margin-top: 100px;
+}
+.images_container{
+  max-width: 70%;
+  max-height: 70%;
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s;  
+  animation-fill-mode: forwards;
+  /* border: 1px solid; */
+  margin : 0px auto;
+}
+@keyframes example {
+  from {top: 100vh}
+  to {top :0vh}
+  0%{opacity:1}
+  25%{opacity:1}
+  50%{opacity:1}
+  90%{opacity: 0.2}
+  100%{opacity: 0}
+}
+.image{
+margin : 0px auto;
+max-width: 100%;
+max-height: 100%;
+}
