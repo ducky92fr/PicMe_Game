@@ -20,13 +20,15 @@ class Game {
   }
   readyPhase =() => {
     setTimeout(()=>{
-      butStart.id ="btn_start_hidden"
       pageCover.className ="Layout_hidden"
-      // this.startGame();
-    },4000)
+      timer.id ="countdown"
+    },5000)
+
+    butStart.id ="btn_start_hidden"
+    timer.id ="countdown_unhidden"
     for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
     this.interValTimer = setInterval(this.countdown,1000)
-    
+  //  this.startGame(); 
   }
   startGame = () => {
     this.intervalTapis = setInterval(this.addImages,7000)
