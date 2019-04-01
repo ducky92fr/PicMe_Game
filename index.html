@@ -7,24 +7,23 @@
   <title>Game</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-<script src = "./app.js" type = "module"></script>
-<script src ="./grid.js" type = "module"></script>
+  <script src = "./app.js" type = "module"></script>
+  <script src ="./grid.js" type = "module"></script>
 </head>
 <body>
-
   <header class ='columns'>
-  <input type="range" id="range" min="1" max="5" step="1">
-  <div class="column is-one-fifth has-background-danger">Score : <span id ='score'>00</span> </div>
-  <div class="column">Health <span id ="health">100</span> </div>
+    <input type="range" id="range" min="1" max="5" step="1">
+    <div class="column is-one-fifth has-background-danger">Score : <span id ='score'>00</span> </div>
+    <div class="column"> <span id ="health">100</span> </div>
+    <div class ="column"><progress class ="progress is-large is-danger" id="healthBar" value="100" max="100"></progress></div>
   </header>
   
   <div class = 'columns'>
-  <div class ='column is-one-fifth' id = 'tapis'>
-  </div>
-
-
-  <div class ='column' id = 'picture_are'>
-      <div id="board">
+    <div class ='column is-1' id = 'tapis'>
+      <!-- Image will be pushed into here -->
+    </div>
+    <div class ='column is-7' id = 'picture_are'>
+        <div id="board">
           <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image2.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image3.png" alt=""></div>
@@ -44,8 +43,8 @@
           <div class="cell"><img class ="grid_image" src="./images_bank/image17.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image18.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image19.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image20.png" alt=""></div> -->
-          <!-- <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image20.png" alt=""></div> 
+          <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image2.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image3.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image4.png" alt=""></div>
@@ -75,23 +74,22 @@
           <div class="cell"><img class ="grid_image" src="./images_bank/image17.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image18.png" alt=""></div>
           <div class="cell"><img class ="grid_image" src="./images_bank/image19.png" alt=""></div> -->
-    
       </div>
+    </div>
+    <div class ='column is-1' id = 'settingGame'></div>
   </div>
-  </div>
-
 
  <div class ="Layout">
    <label class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSSSSS!</label>
     <input id ="inputName" type="text">
     <button class="button is-primary is-rounded is-large" id="btn_start">START</button>
     <button class="button is-primary is-rounded is-large" id="btn_demo">NOOB WANT A DEMO</button>
+    <img id ="imgfunny" src="./Lol-Face-Meme-PNG.png" alt="">
  </div>
  <div class ="has-text-primary" id = 'countdown'>3</div>
  
 
+ 
 
-  
-  
 </body>
 </html>

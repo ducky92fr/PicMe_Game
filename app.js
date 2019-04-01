@@ -9,7 +9,8 @@ const name = document.querySelector("#inputName")
 const labelInput = document.querySelector("#name")
 const health = document.querySelector('#health');
 const score = document.querySelector('#score');
-console.log(pageCover)
+let healthBar = document.getElementById("healthBar")
+console.log(healthBar)
 let trackImageClicked;
 
 class Game {
@@ -51,6 +52,8 @@ class Game {
     this.health -= 10
     score.textContent = this.scoreTrack
     health.textContent =this.health
+    healthBar.value = this.health;
+    
   }
 
   changeSourcePictureArea=() => {
@@ -79,12 +82,11 @@ class Game {
         this.scoreTrack += 10;
         score.textContent = this.scoreTrack;
         health.textContent = this.health;
-      
+      event.target.src ="./images_bank/X.png"
       }
 
     };
 
-  
  countdown = () => {
       if(timer.textContent >1){
       timer.textContent = Number(timer.textContent) - 1}
@@ -99,6 +101,3 @@ class Game {
 const gameOfficial  = new Game()
 butStart.onclick = gameOfficial.readyPhase;
 
-
-
-// console.dir(timer)

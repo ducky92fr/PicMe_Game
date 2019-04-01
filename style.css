@@ -10,17 +10,28 @@
 }
 #tapis{
   border: 1px solid;
-  height : 90vh;
-  width: 10vw;
-  margin-top: 50px;
+  height : 85vh;
+  width: 5vw;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+  border-radius:30px;
 }
 #picture_are{
   border : 1px solid;
-  height: 90vh;
-  width : 70vw;
-  margin-top: 50px;
-  margin-right: 10px;
-  padding: 50px 50px;
+  height: 85vh;
+  width : 85vw;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+  border-radius:30px;
+}
+#settingGame{
+  border : 1px solid;
+  height : 85vh;
+  width: 7vw;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius:30px;
 }
 .images_container{
   max-width: 70%;
@@ -46,11 +57,11 @@ max-width: 100%;
 max-height: 100%;
 }
 .grid_image{
-  margin : 0px auto;
   max-width: 100%;
   max-height: 100%;
   cursor: pointer
   }
+
 /* Grid */
 #board {
   display: grid;
@@ -58,6 +69,8 @@ max-height: 100%;
   width: 100%;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
 .cell:nth-child(even) {
@@ -70,14 +83,7 @@ max-height: 100%;
   border-radius:35px;
   width :100px;
   height: 100px;
-  /* animation-name: imageOpacity;
-  animation-duration: 3s; */
 }
-/* @keyframes imageOpacity {
-  from {opacity:0}
-  to {opacity :1}
-  
-} */
 
 .Layout{
   width: 100vw;
@@ -165,3 +171,16 @@ max-height: 100%;
   .hidden {
     visibility: hidden;
   }
+  #imgfunny{
+    max-width: 30%;
+    max-height: 20%;
+    position: absolute;
+    float:left;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+#health {
+  width : 20rem;
+
+}
