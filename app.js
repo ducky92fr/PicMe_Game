@@ -18,14 +18,20 @@ class Game {
     this.interValTimer
     
   }
-
-  startGame = () => {
-    pageCover.className ="Layout_hidden"
+  readyPhase =() => {
+    setTimeout(()=>{
+      butStart.id ="btn_start_hidden"
+      pageCover.className ="Layout_hidden"
+      // this.startGame();
+    },4000)
     for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
-    this.interValTimer = setInterval(countdown,1000)
+    this.interValTimer = setInterval(this.countdown,1000)
+    
+  }
+  startGame = () => {
     this.intervalTapis = setInterval(this.addImages,7000)
-    this.intervalPictureArea=setInterval(this.changeSourcePictureArea,3000)
-    this.upScoreHealth = setInterval(this.after5Sec,7000)
+    this.intervalPictureArea=setInterval(this.changeSourcePictureArea,7000)
+    this.upScoreHealth = setInterval(this.afterNSec,7000)
   }
 
   afterNSec = () => {
@@ -57,7 +63,10 @@ class Game {
       trackImageClicked = event.target.src
       console.log(trackImageClicked)
     };
-
+ countdown = () => {
+      if(timer.textContent >1){
+      timer.textContent = Number(timer.textContent) - 1}
+      else {timer.textContent = "READY"}}
   }
 
 
@@ -66,11 +75,8 @@ class Game {
 
 
 const gameOfficial  = new Game()
-butStart.onclick = gameOfficial.startGame;
+butStart.onclick = gameOfficial.readyPhase;
 
 
-function countdown(){
-  if(timer.textContent >0){
-  timer.textContent = Number(timer.textContent) - 1}}
 
 // console.dir(timer)

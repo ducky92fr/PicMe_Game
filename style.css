@@ -52,9 +52,9 @@ max-height: 100%;
   
   }
 
-/* .btn_start {
-  
-} */
+.btn_start_hidden {
+  visibility: hidden
+}
 
 /* Grid */
 #board {
@@ -119,5 +119,12 @@ max-height: 100%;
 
 }
 #countdown{
-
+  visibility: hidden
+}
+#countdown_unhidden{
+ position: absolute;
+  left: 47%;
+  top: 37%;
+  font-weight: bold;
+  font-size: 120px;
 }
