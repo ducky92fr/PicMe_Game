@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
 <script src = "./app.js" type = "module"></script>
+<script src ="./grid.js" type = "module"></script>
 </head>
 <body>
 
   <header class ='columns'>
+  <input type="range" id="range" min="1" max="5" step="1">
   <button class="button is-primary is-rounded is-large" id="btn_start">START</button>
   <div class="column is-one-fifth has-background-danger">Score : <span id ='score'>00</span> </div>
   <div class="column">Health <span id ="health">100</span> </div>
@@ -19,11 +21,33 @@
   
   <div class = 'columns'>
   <div class ='column is-one-fifth' id = 'tapis'>
-      
   </div>
 
 
-  <div class ='column' id = 'picture_are'> Area Pictures</div>
+  <div class ='column' id = 'picture_are'>
+      <div id="board">
+          <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
+          <!-- <div class="cell"><img class ="grid_image" src="./images_bank/image2.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image3.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image4.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image5.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image6.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image7.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image8.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image9.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image10.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image11.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image12.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image13.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image14.png" alt=""></div>
+          <div class="cell"><img class ="grid_image" src="./images_bank/image15.png" alt=""></div> -->
+          <!-- <div class="cell"><img class ="image" src="./images_bank/image16.png" alt=""></div>
+          <div class="cell"><img class ="image" src="./images_bank/image17.png" alt=""></div>
+          <div class="cell"><img class ="image" src="./images_bank/image18.png" alt=""></div>
+          <div class="cell"><img class ="image" src="./images_bank/image19.png" alt=""></div>
+          <div class="cell"><img class ="image" src="./images_bank/image20.png" alt=""></div> -->
+      </div>
+  </div>
   </div>
 
 

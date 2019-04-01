@@ -1,3 +1,4 @@
+//Level 1
 import  {arrayImages,getRandomInt} from './image.js'
 const score = document.querySelector('#score');
 const health = document.querySelector('#health');
@@ -28,17 +29,33 @@ class Game {
   }
 
   addImages(){
-    const markup =`
+    const markupTapis =`
     <div class = "images_container">
-    <img class = "image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">
-    </div>
-   `
+      <img class = "image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">
+    </div>`
+    const markupPictureArea =`
+    <div class="cell"> <img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]}alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    <div class="cell"><img class ="image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt=""></div>
+    `
 
     const tapis = document.querySelector('#tapis')
     while (tapis.firstChild) {
       tapis.removeChild(tapis.firstChild);
   }
-    tapis.insertAdjacentHTML('afterbegin',markup)
+    tapis.insertAdjacentHTML('afterbegin',markuptapis)
   }
 
 }
@@ -47,4 +64,10 @@ class Game {
 
 
 const gameOfficial  = new Game()
-butStart.onclick = gameOfficial.addImages;
+// butStart.onclick = gameOfficial.startGame;
+
+function changeSource(){
+const test = document.querySelector('.grid_image');
+test.src = `${arrayImages[getRandomInt(arrayImages.length)]}`
+}
+butStart.onclick = changeSource;
