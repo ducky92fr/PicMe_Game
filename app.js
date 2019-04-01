@@ -1,9 +1,14 @@
 //Level 1
 import  {arrayImages,getRandomInt} from './image.js'
 const butStart = document.querySelector('#btn_start')
+const butDemo = document.querySelector('#btn_demo')
 const imagePictureArea = document.querySelectorAll('.grid_image');
 const timer = document.querySelector('#countdown');
 const pageCover = document.querySelector(".Layout");
+const name = document.querySelector("#inputName")
+const labelInput = document.querySelector("#name")
+const health = document.querySelector('#health');
+const score = document.querySelector('#score');
 console.log(pageCover)
 let trackImageClicked;
 
@@ -18,18 +23,23 @@ class Game {
     this.interValTimer
     
   }
+  //Phase preparation when click start button
   readyPhase =() => {
     setTimeout(()=>{
       pageCover.className ="Layout_hidden"
       timer.id ="countdown"
     },5000)
-
-    butStart.id ="btn_start_hidden"
+    butDemo.classList.add("hidden");
+    butStart.classList.add("hidden");
+    name.classList.add("hidden");
+    labelInput.classList.add("hidden")
     timer.id ="countdown_unhidden"
     for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
     this.interValTimer = setInterval(this.countdown,1000)
-  //  this.startGame(); 
+    this.startGame()
   }
+
+  //Function start Game
   startGame = () => {
     this.intervalTapis = setInterval(this.addImages,7000)
     this.intervalPictureArea=setInterval(this.changeSourcePictureArea,7000)
@@ -37,13 +47,12 @@ class Game {
   }
 
   afterNSec = () => {
-    const health = document.querySelector('#health');
-    const score = document.querySelector('#score');
     this.scoreTrack +=5
     this.health -= 10
     score.textContent = this.scoreTrack
     health.textContent =this.health
   }
+
   changeSourcePictureArea=() => {
     for(let i = 0; i < imagePictureArea.length; i++){ 
       imagePictureArea[i].src =`${arrayImages[getRandomInt(arrayImages.length)]}`
@@ -60,15 +69,26 @@ class Game {
       tapis.removeChild(tapis.firstChild);
     }
     tapis.insertAdjacentHTML('afterbegin',markup)
-}
+  }
+
   playerSelectImage =(event) => {
       trackImageClicked = event.target.src
-      console.log(trackImageClicked)
+      const srcImgGauche = document.querySelector('.image').src
+      if(trackImageClicked === srcImgGauche) {
+        this.health += 20;
+        this.scoreTrack += 10;
+        score.textContent = this.scoreTrack;
+        health.textContent = this.health;
+      
+      }
+
     };
+
+  
  countdown = () => {
       if(timer.textContent >1){
       timer.textContent = Number(timer.textContent) - 1}
-      else {timer.textContent = "READY"}}
+      else {timer.textContent =  "READY"}}
   }
 
 
