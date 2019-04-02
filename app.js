@@ -1,12 +1,13 @@
 //Level 1
 const butStart = document.querySelector('#btn_start');
 const butDemo = document.querySelector('#btn_demo');
-const imagePictureArea = document.querySelectorAll('.grid_image');
+let imagePictureArea;
 const timer = document.querySelector('#countdown');
 const pageCover = document.querySelector(".Layout");
 const name = document.querySelector("#inputName");
 const labelInput = document.querySelector("#name");
 const health = document.querySelector('#health');
+
 const score = document.querySelector('#score');
 const healthBar = document.getElementById("healthBar");
 const board = document.getElementById("board");
@@ -27,6 +28,9 @@ class Game {
   }
   //Phase preparation when click start button
   readyPhase =()=> {
+    this.createGrid()
+    imagePictureArea = document.querySelectorAll('.grid_image');
+    for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
     setTimeout(()=>{
       pageCover.className ="Layout_hidden"
       timer.id ="countdown" },5000)
@@ -36,14 +40,12 @@ class Game {
     name.classList.add("hidden");
     labelInput.classList.add("hidden")
     timer.id ="countdown_unhidden"
-    for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
     this.interValTimer = setInterval(this.countdown,1000)
-    setTimeout(this.startGame,6000)
+    setTimeout(this.startGame,7000)
   }
 
   //Function start Game
   startGame =()=> {
-    this.createGrid()
     this.addImages()
     this.intervalTapis = setInterval(this.addImages,this.durationTurn[this.currLevel-1])
     this.intervalPictureArea=setInterval(this.changeSourcePictureArea,this.durationTurn[this.currLevel-1])
@@ -72,14 +74,16 @@ class Game {
         this.scoreTrack +=25;
         this.health -=20;
         break; }
-    score.textContent = this.scoreTrack;
-    health.textContent =this.health;
-    healthBar.value = this.health;
+    this.updateInfors();
   }
   changeSourcePictureArea =()=> {
-    imagePictureArea.forEach(el => el.src = src =`${arrayImages[getRandomInt(arrayImages.length)]}` )
-    }
-    
+    imagePictureArea.forEach(el => {
+      el.src =`${arrayImages[getRandomInt(arrayImages.length)]}`})
+    // for(let i = 0; i < imagePictureArea.length; i++){ 
+    //   imagePictureArea[i].src =`${arrayImages[getRandomInt(arrayImages.length)]}`
+    // }
+  }
+  
   addImages =()=> {
     const markup =`
       <div class = "images_container">
@@ -94,10 +98,9 @@ class Game {
     trackImageClicked = event.target.src
     const srcImgGauche = document.querySelector('.image').src
     if(trackImageClicked === srcImgGauche) {
-      this.health += 20;
+      this.health += 10;
       this.scoreTrack += 10;
-      score.textContent = this.scoreTrack;
-      health.textContent = this.health;
+      this.updateInfors();
       event.target.src ="./images_bank/X.png"
       }
     }
@@ -112,9 +115,14 @@ class Game {
     board.style.setProperty('grid-template-columns', 'repeat(' + this.level[this.currLevel-1] + ', 1fr)')
     board.style.setProperty('grid-template-rows', 'repeat(' + this.level[this.currLevel-1] + ', 1fr)')
     for (let i = 0; i < numberImg;i++) {
-      const markup =`<img class = "cell image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">`
+      const markup =`<img class = "grid_image cell images" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">`
       board.insertAdjacentHTML("afterbegin",markup)
       }
+    }
+  updateInfors =()=>{
+    score.textContent = this.scoreTrack;
+    health.textContent = this.health;
+    healthBar.value = this.health;
     }
   }
 
