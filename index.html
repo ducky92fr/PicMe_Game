@@ -12,71 +12,25 @@
 </head>
 <body>
   <header class ='columns'>
-    <input type="range" id="range" min="1" max="5" step="1">
-    <div class="column is-one-fifth has-background-danger">Score : <span id ='score'>00</span> </div>
-    <div class="column"> <span id ="health">100</span> </div>
-    <div class ="column"><progress class ="progress is-large is-danger" id="healthBar" value="100" max="100"></progress></div>
+    <div class ="column is-two-fifths"><progress class ="progress is-large is-danger" id="healthBar" value="100" max="100"></progress></div>
+    <div class="column is-one-fifth">Score : <span id ='score'>00</span> </div>
+    
   </header>
   
   <div class = 'columns'>
     <div class ='column is-1' id = 'tapis'>
       <!-- Image will be pushed into here -->
     </div>
+    
     <div class ='column is-7' id = 'picture_are'>
         <div id="board">
-          <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image2.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image3.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image4.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image5.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image6.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image7.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image8.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image9.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image10.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image11.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image12.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image13.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image14.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image15.png" alt=""></div>
-          <!-- <div class="cell"><img class ="grid_image" src="./images_bank/image16.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image17.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image18.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image19.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image20.png" alt=""></div> 
-          <div class="cell"> <img class ="grid_image" src="./images_bank/image1.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image2.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image3.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image4.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image5.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image6.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image7.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image8.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image9.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image10.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image11.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image12.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image13.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image14.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image15.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image16.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image17.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image18.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image19.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image20.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image10.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image11.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image12.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image13.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image14.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image15.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image16.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image17.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image18.png" alt=""></div>
-          <div class="cell"><img class ="grid_image" src="./images_bank/image19.png" alt=""></div> -->
-      </div>
+         <!-- Images for board here -->
+        </div>
     </div>
-    <div class ='column is-1' id = 'settingGame'></div>
+    <div class ='column is-1' id = 'settingGame'>
+      Best Player : Duc
+      Your Stage : 1
+    </div>
   </div>
 
  <div class ="Layout">
