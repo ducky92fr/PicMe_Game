@@ -1,3 +1,4 @@
+ export 
  const butStart = document.querySelector('#btn_start');
  const butDemo = document.querySelector('#btn_demo');
  const imagePictureArea = document.querySelectorAll('.grid_image');

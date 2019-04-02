@@ -77,7 +77,7 @@ animation-name: board;
 }
 
 .cell:nth-child(even) {
-  background: #001f3f;
+  background: whitesmoke;
 }
 .cell:nth-child(odd) {
   background: #FF4136;

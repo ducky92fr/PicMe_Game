@@ -7,11 +7,11 @@ const pageCover = document.querySelector(".Layout");
 const name = document.querySelector("#inputName");
 const labelInput = document.querySelector("#name");
 const health = document.querySelector('#health');
-
 const score = document.querySelector('#score');
 const healthBar = document.getElementById("healthBar");
 const board = document.getElementById("board");
 import  {arrayImages,getRandomInt} from './image.js'
+console.log(arrayImages)
 let trackImageClicked;
 class Game {
   constructor(){
@@ -20,6 +20,8 @@ class Game {
     this.level = [3,4,5,6,7],
     this.currLevel = 1,
     this.durationTurn =[8000,7000,6000,5000,5000]
+    this.scoreControl=[5,10,15,20,25],
+    this.healthControl =[5,10,15,15,20],
     this.intervalTapis ,
     this.intervalPictureArea,
     this.interval,
@@ -53,28 +55,16 @@ class Game {
   }
 
   afterNSec =()=> {
-    switch(this.currLevel){
-      case 1: 
-        this.scoreTrack +=5;
-        this.health -= 5;
-        break;
-      case 2: 
-        this.scoreTrack +=10;
-        this.health -= 10;
-        break;
-      case 3:
-        this.scoreTrack += 15;
-        this.health -= 15;
-        break;
-      case 4:
-        this.scoreTrack +=20;
-        this.health -=15;
-        break;
-      case 5:
-        this.scoreTrack +=25;
-        this.health -=20;
-        break; }
+    this.scoreTrack += this.scoreControl[this.currLevel-1];
+    if(this.health - this.healthControl[this.currLevel-1] <= 0){
+      this.health = 0
+    } else(this.health -= this.healthControl[this.currLevel-1])
     this.updateInfors();
+    this.levelControl();
+    const imgContainer = document.querySelector('.images_container');
+    imgContainer.style.animationDuration = this.durationTurn[this.currLevel-1]
+    console.log(this.currLevel);
+    console.dir(imgContainer.style)
   }
   changeSourcePictureArea =()=> {
     imagePictureArea.forEach(el => {
@@ -85,6 +75,7 @@ class Game {
   }
   
   addImages =()=> {
+  
     const markup =`
       <div class = "images_container">
       <img class = "image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">
@@ -98,11 +89,12 @@ class Game {
     trackImageClicked = event.target.src
     const srcImgGauche = document.querySelector('.image').src
     if(trackImageClicked === srcImgGauche) {
-      this.health += 10;
+      (this.health + 10) > 100 ? this.health = 100 : this.health +=10;
       this.scoreTrack += 10;
       this.updateInfors();
-      event.target.src ="./images_bank/X.png"
+      event.target.src ="./online-booking-checkpoint-choice-accept-512.png"
       }
+    console.log(trackImageClicked)
     }
 
   countdown =()=> {
@@ -124,7 +116,14 @@ class Game {
     health.textContent = this.health;
     healthBar.value = this.health;
     }
+  levelControl =()=>{
+    if(this.scoreTrack >= 50){this.currLevel =2}
+    if(this.scoreTrack >=100){this.currLevel =3}
+    if(this.scoreTrack >=150){this.currLevel =4}
+    if(this.ScoreTrack >=200){this.currLevel =5}
+    }
   }
+
 
 
 
