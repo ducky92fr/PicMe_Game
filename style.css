@@ -34,7 +34,7 @@ header{
   max-height: 100%;
   position: relative;
   animation-name: example;
-  animation-duration: 7s;  
+  /* animation-duration: 7s;   */
   animation-fill-mode: forwards;
   margin : 0px auto;
 }
@@ -70,7 +70,7 @@ animation-name: board;
   display: grid;
   min-height: 100%;
   width: 100%;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
@@ -80,7 +80,7 @@ animation-name: board;
   background: whitesmoke;
 }
 .cell:nth-child(odd) {
-  background: #FF4136;
+  background: lightgray;
 }
 .cell {
   border-radius:35px;

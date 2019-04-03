@@ -19,9 +19,9 @@ class Game {
   constructor(){
     this.scoreTrack = 0,
     this.health = 100,
-    this.level = [3,4,5,6,7],
+    this.level = [3,4,5,6,6],
     this.currLevel = 1,
-    this.durationTurn =[8000,7000,6000,5000,5000]
+    this.durationTurn =[8000,7000,6000,5000,2000]
     this.scoreControl=[5,10,15,20,25],
     this.healthControl =[5,10,15,15,20],
     this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
@@ -48,18 +48,20 @@ class Game {
   //Function start Game
   startGame =()=> {
     this.addImages()
-    this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
+    // this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
   }
 
   afterEachTurn =()=> {
     this.levelControl();
     this.updateNodeList();
     this.scoreTrack += this.scoreControl[this.currLevel-1];
-    if(this.health - this.healthControl[this.currLevel-1] <= 0){
-      this.health = 0
-    } else(this.health -= this.healthControl[this.currLevel-1])
+    if(this.health - this.healthControl[this.currLevel-1] <= 0){ this.health = 0} 
+    else(this.health -= this.healthControl[this.currLevel-1])
     const imgContainer = document.querySelector('.images_container');
-    imgContainer.style.animationDuration = this.durationTurn[this.currLevel-1]
+    imgContainer.style.animationDuration = this.durationTurn[this.currLevel-1].toString().replace('0','s');
+    console.log(this.currLevel)
+    console.dir(this.durationTurn[this.currLevel-1].toString().replace('000','s') )
+    console.dir(imgContainer)
     this.updateUI();
     this.addImages();
     this.changeSourcePictureArea();
@@ -94,6 +96,7 @@ class Game {
       this.updateUI();
       event.target.src ="./online-booking-checkpoint-choice-accept-512.png"
       }
+    console.log(trackImageClicked)
     }
 
   countdown =()=> {
@@ -125,7 +128,7 @@ class Game {
     if(this.scoreTrack >= 50){this.currLevel =2;this.arrayImageUpdate(); this.createGrid()}
     if(this.scoreTrack >=100){this.currLevel =3;this.arrayImageUpdate();this.createGrid()}
     if(this.scoreTrack >=150){this.currLevel =4;this.arrayImageUpdate();this.createGrid()}
-    if(this.ScoreTrack >=200){this.currLevel =5;this.arrayImageUpdate();this.createGrid()}
+    if(this.scoreTrack >=200){this.currLevel =5;this.arrayImageUpdate();this.createGrid()}
     }
 
   arrayImageUpdate =()=>{
