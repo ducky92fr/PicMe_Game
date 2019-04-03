@@ -14,7 +14,7 @@ const arrayImages5 =[];
 // const images
 const arrayImagesLeft =[]
 
-for(let i=1;i <= 31;i++){
+for(let i=1;i <= 33;i++){
   arrayImages[i-1] =`./images_bank/image${i}.png`
 }
 function getRandomInt(max) {

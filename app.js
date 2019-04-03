@@ -10,10 +10,10 @@ const health = document.querySelector('#health');
 const score = document.querySelector('#score');
 const healthBar = document.querySelector("#healthBar");
 const board = document.querySelector("#board");
-const btntest = document.querySelector('#btn_test');
 let currArrayImages=[];
 let imagePictureArea;
 let trackImageClicked;
+let winTurn = false;
 
 class Game {
   constructor(){
@@ -21,7 +21,7 @@ class Game {
     this.health = 100,
     this.level = [3,4,5,6,6],
     this.currLevel = 1,
-    this.durationTurn =[8000,7000,6000,5000,2000]
+    this.durationTurn =[6000,5000,3500,3000,2000]
     this.scoreControl=[5,10,15,20,25],
     this.healthControl =[5,10,15,15,20],
     this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
@@ -48,38 +48,34 @@ class Game {
   //Function start Game
   startGame =()=> {
     this.addImages()
-    // this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
+    this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
   }
 
   afterEachTurn =()=> {
     this.levelControl();
     this.updateNodeList();
-    this.scoreTrack += this.scoreControl[this.currLevel-1];
-    if(this.health - this.healthControl[this.currLevel-1] <= 0){ this.health = 0} 
-    else(this.health -= this.healthControl[this.currLevel-1])
+    // this.scoreTrack += this.scoreControl[this.currLevel-1];
+    if(winTurn === false){
+      if(this.health - this.healthControl[this.currLevel-1] <= 0){ 
+        this.health = 0
+        } else(this.health -= this.healthControl[this.currLevel-1])
+      }
     const imgContainer = document.querySelector('.images_container');
-    imgContainer.style.animationDuration = this.durationTurn[this.currLevel-1].toString().replace('0','s');
-    console.log(this.currLevel)
-    console.dir(this.durationTurn[this.currLevel-1].toString().replace('000','s') )
-    console.dir(imgContainer)
     this.updateUI();
     this.addImages();
     this.changeSourcePictureArea();
     console.log(this.currLevel)
+    console.log(this.durationTurn[this.currLevel-1])
+    console.log(this.currLevel)
+    winTurn = false;
   }
   changeSourcePictureArea =()=> {
-    // imagePictureArea.forEach(el => {
-    //   el.src =`${arrayImages[getRandomInt(arrayImages.length)]}`})
-    for(let i = 0; i < imagePictureArea.length; i++){ 
-      imagePictureArea[i].src = currArrayImages[i]
-      }
+    for(let i = 0; i < imagePictureArea.length; i++){ imagePictureArea[i].src = currArrayImages[i] }
   }
   
   addImages =()=> {
-    console.log(currArrayImages)
-    console.log(getRandomInt(currArrayImages.length-1))
     const markup =`
-      <div class = "images_container">
+      <div class = "images_container${this.currLevel}">
       <img class = "image" src=${currArrayImages[getRandomInt(currArrayImages.length-1)]} alt="">
       </div>`
     const tapis = document.querySelector('#tapis')
@@ -93,6 +89,7 @@ class Game {
     if(trackImageClicked === srcImgGauche) {
       (this.health + 10) > 100 ? this.health = 100 : this.health +=10;
       this.scoreTrack += 10;
+      winTurn =true;
       this.updateUI();
       event.target.src ="./online-booking-checkpoint-choice-accept-512.png"
       }
@@ -146,11 +143,5 @@ class Game {
 }
 
 
-
-
-
-
 const gameOfficial  = new Game()
 butStart.onclick = gameOfficial.readyPhase;
-// window.onclick = gameOfficial.createGrid
-btn_test.onclick = gameOfficial.afterEachTurn;
