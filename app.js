@@ -1,18 +1,20 @@
 //Level 1
+import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt} from './image.js'
 const butStart = document.querySelector('#btn_start');
 const butDemo = document.querySelector('#btn_demo');
-let imagePictureArea;
 const timer = document.querySelector('#countdown');
 const pageCover = document.querySelector(".Layout");
 const name = document.querySelector("#inputName");
 const labelInput = document.querySelector("#name");
 const health = document.querySelector('#health');
 const score = document.querySelector('#score');
-const healthBar = document.getElementById("healthBar");
-const board = document.getElementById("board");
-import  {arrayImages,getRandomInt} from './image.js'
-console.log(arrayImages)
+const healthBar = document.querySelector("#healthBar");
+const board = document.querySelector("#board");
+const btntest = document.querySelector('#btn_test');
+let currArrayImages=[];
+let imagePictureArea;
 let trackImageClicked;
+
 class Game {
   constructor(){
     this.scoreTrack = 0,
@@ -22,63 +24,61 @@ class Game {
     this.durationTurn =[8000,7000,6000,5000,5000]
     this.scoreControl=[5,10,15,20,25],
     this.healthControl =[5,10,15,15,20],
-    this.intervalTapis ,
-    this.intervalPictureArea,
-    this.interval,
-    this.upScoreHealth,
-    this.interValTimer
+    this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
+    this.nextRound,
+    this.timerCountdown
   }
   //Phase preparation when click start button
   readyPhase =()=> {
-    this.createGrid()
-    imagePictureArea = document.querySelectorAll('.grid_image');
-    for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
-    setTimeout(()=>{
-      pageCover.className ="Layout_hidden"
-      timer.id ="countdown" },5000)
+    this.arrayImageUpdate();
+    this.createGrid();
+    this.updateNodeList();
+
+    setTimeout(()=>{ pageCover.className ="Layout_hidden" ; timer.id ="countdown" },5000)
 
     butDemo.classList.add("hidden");
     butStart.classList.add("hidden");
     name.classList.add("hidden");
     labelInput.classList.add("hidden")
     timer.id ="countdown_unhidden"
-    this.interValTimer = setInterval(this.countdown,1000)
+    this.timerCountdown = setInterval(this.countdown,1000)
     setTimeout(this.startGame,7000)
   }
 
   //Function start Game
   startGame =()=> {
     this.addImages()
-    this.intervalTapis = setInterval(this.addImages,this.durationTurn[this.currLevel-1])
-    this.intervalPictureArea=setInterval(this.changeSourcePictureArea,this.durationTurn[this.currLevel-1])
-    this.upScoreHealth = setInterval(this.afterNSec,this.durationTurn[this.currLevel-1])
+    this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
   }
 
-  afterNSec =()=> {
+  afterEachTurn =()=> {
+    this.levelControl();
+    this.updateNodeList();
     this.scoreTrack += this.scoreControl[this.currLevel-1];
     if(this.health - this.healthControl[this.currLevel-1] <= 0){
       this.health = 0
     } else(this.health -= this.healthControl[this.currLevel-1])
-    this.updateInfors();
-    this.levelControl();
     const imgContainer = document.querySelector('.images_container');
     imgContainer.style.animationDuration = this.durationTurn[this.currLevel-1]
-    console.log(this.currLevel);
-    console.dir(imgContainer.style)
+    this.updateUI();
+    this.addImages();
+    this.changeSourcePictureArea();
+    console.log(this.currLevel)
   }
   changeSourcePictureArea =()=> {
-    imagePictureArea.forEach(el => {
-      el.src =`${arrayImages[getRandomInt(arrayImages.length)]}`})
-    // for(let i = 0; i < imagePictureArea.length; i++){ 
-    //   imagePictureArea[i].src =`${arrayImages[getRandomInt(arrayImages.length)]}`
-    // }
+    // imagePictureArea.forEach(el => {
+    //   el.src =`${arrayImages[getRandomInt(arrayImages.length)]}`})
+    for(let i = 0; i < imagePictureArea.length; i++){ 
+      imagePictureArea[i].src = currArrayImages[i]
+      }
   }
   
   addImages =()=> {
-  
+    console.log(currArrayImages)
+    console.log(getRandomInt(currArrayImages.length-1))
     const markup =`
       <div class = "images_container">
-      <img class = "image" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">
+      <img class = "image" src=${currArrayImages[getRandomInt(currArrayImages.length-1)]} alt="">
       </div>`
     const tapis = document.querySelector('#tapis')
     while (tapis.firstChild) { tapis.removeChild(tapis.firstChild);}
@@ -91,10 +91,9 @@ class Game {
     if(trackImageClicked === srcImgGauche) {
       (this.health + 10) > 100 ? this.health = 100 : this.health +=10;
       this.scoreTrack += 10;
-      this.updateInfors();
+      this.updateUI();
       event.target.src ="./online-booking-checkpoint-choice-accept-512.png"
       }
-    console.log(trackImageClicked)
     }
 
   countdown =()=> {
@@ -103,27 +102,45 @@ class Game {
     }
 
   createGrid =()=> {
+    if(board.innerHTML != ""){board.innerHTML = ""}
     const numberImg = this.level[this.currLevel-1]*this.level[this.currLevel-1]
     board.style.setProperty('grid-template-columns', 'repeat(' + this.level[this.currLevel-1] + ', 1fr)')
     board.style.setProperty('grid-template-rows', 'repeat(' + this.level[this.currLevel-1] + ', 1fr)')
     for (let i = 0; i < numberImg;i++) {
-      const markup =`<img class = "grid_image cell images" src=${arrayImages[getRandomInt(arrayImages.length)]} alt="">`
+      const markup =`<img class = "grid_image cell images" 
+      src=${currArrayImages[i]} alt="">`
+      console.log(currArrayImages[i])
       board.insertAdjacentHTML("afterbegin",markup)
       }
     }
-  updateInfors =()=>{
+
+  updateUI =()=>{
     score.textContent = this.scoreTrack;
     health.textContent = this.health;
     healthBar.value = this.health;
     }
-  levelControl =()=>{
-    if(this.scoreTrack >= 50){this.currLevel =2}
-    if(this.scoreTrack >=100){this.currLevel =3}
-    if(this.scoreTrack >=150){this.currLevel =4}
-    if(this.ScoreTrack >=200){this.currLevel =5}
-    }
-  }
 
+  levelControl =()=>{
+    if(this.scoreTrack <50){this.arrayImageUpdate()}
+    if(this.scoreTrack >= 50){this.currLevel =2;this.arrayImageUpdate(); this.createGrid()}
+    if(this.scoreTrack >=100){this.currLevel =3;this.arrayImageUpdate();this.createGrid()}
+    if(this.scoreTrack >=150){this.currLevel =4;this.arrayImageUpdate();this.createGrid()}
+    if(this.ScoreTrack >=200){this.currLevel =5;this.arrayImageUpdate();this.createGrid()}
+    }
+
+  arrayImageUpdate =()=>{
+    const numberImg = this.level[this.currLevel-1]*this.level[this.currLevel-1]
+    currArrayImages = this.allArrayImage[this.currLevel-1];
+    for(let i =0 ;i<numberImg;i++){
+      currArrayImages[i]= arrayImages[getRandomInt(arrayImages.length)]
+      }
+    }
+
+  updateNodeList=()=>{
+    imagePictureArea = document.querySelectorAll('.grid_image');
+    for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
+  }
+}
 
 
 
@@ -133,3 +150,4 @@ class Game {
 const gameOfficial  = new Game()
 butStart.onclick = gameOfficial.readyPhase;
 // window.onclick = gameOfficial.createGrid
+btn_test.onclick = gameOfficial.afterEachTurn;
