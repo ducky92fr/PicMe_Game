@@ -44,7 +44,7 @@ class Game {
     this.arrayImageUpdate();
     this.createGrid();
     this.updateNodeList();
-    namePlayer.textContent =name.value.toString().charAt(0);
+    name.value == "" ? namePlayer.textContent = "UK" : namePlayer.textContent = name.value.toString().charAt(0);
     setTimeout(()=>{ pageCover.className ="Layout_hidden" ; timer.id ="countdown" },5000);
 
     btnDemo.classList.add("hidden");
