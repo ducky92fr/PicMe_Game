@@ -6,6 +6,7 @@ const btnDemo = document.querySelector('#btn_demo');
 const btnBack = document.querySelector('#btn_back')
 const btnMenu = document.querySelector('#btn_menu')
 const btnQuit = document.querySelector('#btn_quit')
+const btnQuitInGame = document.querySelector('#btn_quit1')
 const timer = document.querySelector('#countdown');
 const pageCover = document.querySelector('.Layout');
 const pagePause =document.querySelector('#Layout2')
@@ -16,6 +17,8 @@ const labelInput = document.querySelector('#name');
 const score = document.querySelector('#score');
 const healthBar = document.querySelector('#healthBar');
 const board = document.querySelector('#board');
+const topPlayer = document.querySelectorAll('.topPlayer')
+console.log(topPlayer)
 const yourStage = document.querySelector('#your_stage')
 let currArrayImages=[];
 let imagePictureArea;
@@ -28,7 +31,7 @@ class Game {
     this.health = 100,
     this.level = [3,4,5,6,6],
     this.currLevel = 1,
-    this.durationTurn =[3000,5000,3500,3000,2000]
+    this.durationTurn =[6000,5000,3500,3000,2000]
     this.scoreControl=[5,10,15,20,25],
     this.healthControl =[30,20,20,25,30],
     this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
@@ -37,6 +40,7 @@ class Game {
   }
   //Phase preparation when click start button
   readyPhase =()=> {
+    this.topPlayer();
     this.arrayImageUpdate();
     this.createGrid();
     this.updateNodeList();
@@ -69,6 +73,26 @@ class Game {
     pagePause.classList.add("hidden")
     this.startGame();
   }
+  demoGame =()=>{
+    btnPause.classList.add("hidden")
+    this.arrayImageUpdate();
+    this.createGrid();
+    this.updateNodeList();
+    setTimeout(()=>{ pageCover.className ="Layout_hidden" ; timer.id ="countdown" },5000);
+    btnDemo.classList.add("hidden");
+    btnStart.classList.add("hidden");
+    name.classList.add("hidden");
+    labelInput.classList.add("hidden");
+    timer.id ="countdown_unhidden";
+    this.timerCountdown = setInterval(this.countdown,1000);
+    setTimeout(()=>{
+      clearInterval(this.timer)},7000);
+
+    setTimeout(this.addImages,7000)
+    setTimeout(()=>{setInterval(this.arrayImageUpdate,5000)},7000);
+    setTimeout(()=>{setInterval(this.changeSourcePictureArea,5000)},7000)
+    setTimeout(()=>{setInterval(this.addImages,5000)},7000)
+  }
 
   afterEachTurn =()=> {
     this.levelControl();
@@ -96,8 +120,6 @@ class Game {
     while (tapis.firstChild) { tapis.removeChild(tapis.firstChild);}
     tapis.insertAdjacentHTML('afterbegin',markup)
     const durationAnimation = (this.durationTurn[this.currLevel-1]/1000).toString()+"s"
-    console.log(durationAnimation)
-    console.log(this.durationTurn[this.currLevel-1])
     document.querySelector('.images_container').style.animationDuration =durationAnimation;
   }
 
@@ -172,8 +194,22 @@ class Game {
     const UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem("trackBestPlayer"))
     if(UpdatedArrayBestPlayer ==null) UpdatedArrayBestPlayer =[];
     UpdatedArrayBestPlayer.push(player)
-    localStorage.setItem("trackBestPlayer",JSON.stringify(UpdatedArrayBestPlayer))
+    const newArrayBestPlayer = UpdatedArrayBestPlayer.sort((a,b)=>{
+      if(a.score > b.score) return -1;
+      if(a.score < b.score) return 1;
+      if(a.score = b.score) return 0;
+    })
+    localStorage.setItem("trackBestPlayer",JSON.stringify(newArrayBestPlayer))
     console.log(localStorage.getItem("trackBestPlayer"))
+  }
+  topPlayer =()=>{
+    const arrayTopPlayer =JSON.parse(localStorage.getItem("trackBestPlayer"))
+    for(let i=0;i<topPlayer.length;i++) {
+      topPlayer[i].textContent = `
+      ${arrayTopPlayer[i].name} : ${arrayTopPlayer[i].score}
+      `
+    }
+
   }
 }
 
@@ -183,5 +219,7 @@ btnStart.onclick = gameOfficial.readyPhase;
 // btnRestart.onclick = gameOfficial.readyPhase;
 btnPause.onclick = gameOfficial.pauseGame;
 btnBack.onclick = gameOfficial.backGame;
+btnDemo.onclick = gameOfficial.demoGame;
+btnQuitInGame.onclick = window.location.reload.bind(window.location);
 btnMenu.onclick = window.location.reload.bind(window.location);
-btnQuit.onclick = window.location.reload.bind(window.location)
+btnQuit.onclick = window.location.reload.bind(window.location);

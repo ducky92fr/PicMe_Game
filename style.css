@@ -212,6 +212,11 @@ animation-name: board;
     height: 3rem;
     width: 3rem;
   }
+  #btn_quit1{
+    border-radius:50px;
+    height: 3rem;
+    width: 3rem;
+  }
   #score{
     border-radius:50px;
     height: 3rem;
