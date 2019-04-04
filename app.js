@@ -1,11 +1,14 @@
 //Level 1
 import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt} from './image.js'
-const butStart = document.querySelector('#btn_start');
-const butDemo = document.querySelector('#btn_demo');
-const butRestart = document.querySelector('#btn_restart')
-const butMenu = document.querySelector('#btn_menu')
+const btnStart = document.querySelector('#btn_start');
+const btnPause = document.querySelector('#btn_pause')
+const btnDemo = document.querySelector('#btn_demo');
+// const btnRestart = document.querySelector('#btn_restart')
+const btnMenu = document.querySelector('#btn_menu')
+const btnQuit = document.querySelector('#btn_quit')
 const timer = document.querySelector('#countdown');
 const pageCover = document.querySelector('.Layout');
+const pagePause =document.querySelector('#Layout2')
 const pageEndGame =document.querySelector('#Layout1')
 const name = document.querySelector('#inputName');
 const labelInput = document.querySelector('#name');
@@ -24,9 +27,9 @@ class Game {
     this.health = 100,
     this.level = [3,4,5,6,6],
     this.currLevel = 1,
-    this.durationTurn =[2000,5000,3500,3000,2000]
+    this.durationTurn =[6000,5000,3500,3000,2000]
     this.scoreControl=[5,10,15,20,25],
-    this.healthControl =[30,10,15,15,20],
+    this.healthControl =[5,10,15,15,20],
     this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
     this.nextRound,
     this.timerCountdown
@@ -39,8 +42,8 @@ class Game {
 
     setTimeout(()=>{ pageCover.className ="Layout_hidden" ; timer.id ="countdown" },5000);
 
-    butDemo.classList.add("hidden");
-    butStart.classList.add("hidden");
+    btnDemo.classList.add("hidden");
+    btnStart.classList.add("hidden");
     name.classList.add("hidden");
     labelInput.classList.add("hidden");
     timer.id ="countdown_unhidden";
@@ -53,6 +56,9 @@ class Game {
     clearInterval(this.timerCountdown)
     this.addImages()
     this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel-1])
+  }
+  pauseGame =()=>{
+    pagePause.classList.remove("hidden")
   }
 
   afterEachTurn =()=> {
@@ -156,6 +162,8 @@ class Game {
 
 
 const gameOfficial  = new Game()
-butStart.onclick = gameOfficial.readyPhase;
-butRestart.onclick = gameOfficial.readyPhase;
-butMenu.onclick = window.location.reload.bind(window.location);
+btnStart.onclick = gameOfficial.readyPhase;
+// btnRestart.onclick = gameOfficial.readyPhase;
+btnPause.onclick = gameOfficial.pauseGame;
+btnMenu.onclick = window.location.reload.bind(window.location);
+btnQuit.onclick = window.location.reload.bind(window.location)

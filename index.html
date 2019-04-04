@@ -15,7 +15,7 @@
     <div class ='column is-one-fifth'><progress class ='progress is-large is-danger' id="healthBar" value="100" max="100"></progress></div>
     <div class="column has-text-centered">Score : <span id ='score'>00</span> </div>
     <div class ='column is-one-fifth has-text-right'>PHASE : <span id="your_stage">1</span></div>
-    <div class ='column is-one-fifth'><button class='button is-danger is-rounded is-normal'>PAUSE</button></div>
+    <div class ='column is-one-fifth'><button class='button is-danger is-rounded is-normal' id="btn_pause">PAUSE</button></div>
   </header>
   
   <div class = 'columns'>
@@ -34,8 +34,8 @@
     </div>
   </div>
 
- <div class ="Layout hidden" >
-   <label class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSSSSS!</label>
+ <div class ="Layout" >
+   <div class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSSSSS!</div>
     <input id ="inputName" type="text">
     <button class="button is-primary is-rounded is-large" id="btn_start">START</button>
     <button class="button is-primary is-rounded is-large" id="btn_demo">DEMO FOR NOOB</button>
@@ -43,21 +43,19 @@
  </div>
  <div class ="has-text-primary" id = 'countdown'>3</div>
 
- <div class ="Layout hidden" id ="Layout1">
-    <label class ='has-text-warning is-size-2'>YOU DIED</label>
-     <button class="button is-primary is-rounded is-large" id="btn_restart">RESTART</button>
-     <button class="button is-primary is-rounded is-large" id="btn_menu">MENU</button>
-     <img id ="imgfunny" src="./Lol-Face-Meme-PNG.png" alt="">
-  </div>
-
   <div class ="Layout hidden" id ="Layout2">
-      <label class ='has-text-warning is-size-2'>PAUSED</label>
-       <button class="button is-primary is-rounded is-large" id="btn_back">BACK</button>
-       <button class="button is-primary is-rounded is-large" id="btn_quit">QUIT</button>
-       <img id ="imgfunny" src="./Lol-Face-Meme-PNG.png" alt="">
+      <div class ='has-text-warning is-size-2 text'>PAUSED</div>
+      <button class="button is-primary is-rounded is-large" id="btn_back">BACK</button>
+      <button class="button is-primary is-rounded is-large" id="btn_quit">QUIT</button>
+      <img id ="imgfunny" src="./Lol-Face-Meme-PNG.png" alt="">
     </div>
     <div class ="has-text-primary" id = 'countdown'>3</div>
- 
+ <div class ="Layout hidden" id ="Layout1">
+    <div class ='has-text-warning is-size-2 text'>YOU DIED</div>
+     <!-- <button class="button is-primary is-rounded is-large" id="btn_restart">RESTART</button> -->
+     <button class="button is-primary is-rounded is-large " id="btn_menu">PLAY AGAIN</button>
+     <img id ="imgfunny" src="./Lol-Face-Meme-PNG.png" alt="">
+  </div>
 
  
 
