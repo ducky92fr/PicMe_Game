@@ -33,8 +33,7 @@ class Game {
     this.health = 100,
     this.level = [0,3,4,5],
     this.currLevel = 1,
-    this.durationTurn =[0,4000,3000,2000],
-    this.scoreControl=[0,15,20,20],
+    this.scoreControl=[0,15,30,40],
     this.healthControl =[0,15,20,30],
     this.allArrayImage =[0,arrayImages1,arrayImages2,arrayImages3],
     this.nextRound,
@@ -51,7 +50,7 @@ class Game {
   startGame =()=> {
     clearInterval(this.timerCountdown)
     this.addImages()
-    this.nextRound = setInterval(this.afterEachTurn,this.durationTurn[this.currLevel])
+    this.nextRound = setInterval(this.afterEachTurn,2000)
   }
   pauseGame =()=>{
     audioClick.play()
@@ -103,11 +102,12 @@ class Game {
     this.updateNodeList()
     this.updateUI()
     this.changeSourcePictureArea()
-    this.addImages()
+    
     winTurn = false
   }
   changeSourcePictureArea =()=> {
     for(let i = 0; i < imagePictureArea.length; i++){ imagePictureArea[i].src = currArrayImages[i] }
+    this.addImages()
   }
   
   addImages =()=> {
@@ -118,8 +118,6 @@ class Game {
     const tapis = document.querySelector('#tapis')
     while (tapis.firstChild) { tapis.removeChild(tapis.firstChild);}
     tapis.insertAdjacentHTML('afterbegin',markup)
-    const durationAnimation = (this.durationTurn[this.currLevel]/1000).toString()+'s'
-    document.querySelector('.images_container').style.animationDuration =durationAnimation
   }
 
   playerSelectImage =(event) => {
@@ -168,7 +166,7 @@ class Game {
   levelControl =()=>{
     if(this.scoreTrack <70){this.arrayImageUpdate()}
     if(this.scoreTrack >= 70){this.currLevel =2;this.arrayImageUpdate(); this.createGrid()}
-    if(this.scoreTrack >=120){this.currLevel =3;this.arrayImageUpdate();this.createGrid()}
+    if(this.scoreTrack >=120){this.currLevel =3;this.arrayImageUpdate(); this.createGrid()}
     }
 
   arrayImageUpdate =()=>{
@@ -204,7 +202,7 @@ class Game {
     const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'))
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
-      ${arrayTopPlayer[i].name} : ${arrayTopPlayer[i].score}
+      ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
     }
   }
