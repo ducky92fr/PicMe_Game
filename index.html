@@ -10,32 +10,50 @@
   <script src = "./app.js" type = "module"></script>
   <script src ="./grid.js" type = "module"></script>
 </head>
-<body>
+<body >
   <header class ='columns'>
-    <div class ='column is-one-fifth'><progress class ='progress is-large is-danger' id="healthBar" value="100" max="100"></progress></div>
-    <div class="column has-text-centered">Score : <span id ='score'>00</span> </div>
-    <div class ='column is-one-fifth has-text-right'>PHASE : <span id="your_stage">1</span></div>
-    <div class ='column is-one-fifth'><button class='button is-danger is-rounded is-normal' id="btn_pause">PAUSE</button></div>
+    <div class ='column is-one-quarter'><progress class ='progress is-large is-danger' id="healthBar" value="100" max="100"></progress></div>
+    
+    <div class ='column is-one-quarter' id="all_button">
+      <button class='button is-warning is-medium' id="stage">L <span id="your_stage">1</span></button>
+      <button class='button is-info is-medium' id="score">00</button>
+      <button class='button is-danger  is-small' id="btn_pause">PAUSE</button>
+    </div>
+
+    <div class ='column is-one-quarter' id="namePlayer"></div>
+        <button class='button is-primary is-medium' id="namePlayerUI">D</button>
+    </div>
   </header>
   
   <div class = 'columns'>
-    <div class ='column is-1' id = 'tapis'>
+    <div class ='column is-1 has-background-light' id = 'tapis'>
       <!-- Image will be pushed into here -->
     </div>
     
-    <div class ='column is-7' id = 'picture_are'>
+    <div class ='column is-7 has-background-light' id = 'picture_are'>
         <div id="board">
          <!-- Images for board here -->
         </div>
     </div>
-    <div class ='column is-1 has-text-centered' id = 'settingGame'>
-      <div>Best Player : <span>Duc</span></div>
+    <div class ='column is-1 has-text-centered has-background-light' id = 'settingGame'>
+      <div>TOP 10</div>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+      <!-- <div>PHASE : <span id="your_stage">1</span></div> -->
       <!-- <div>PHASE : <span id="your_stage">1</span></div> -->
     </div>
   </div>
 
- <div class ="Layout" >
-   <div class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSSSSS!</div>
+ <div class ="Layout hidden" >
+   <div class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSS!</div>
     <input id ="inputName" type="text">
     <button class="button is-primary is-rounded is-large" id="btn_start">START</button>
     <button class="button is-primary is-rounded is-large" id="btn_demo">DEMO FOR NOOB</button>

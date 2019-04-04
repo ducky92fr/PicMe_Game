@@ -2,6 +2,7 @@ body {
   height: 100vh;
   width:99vw;
   overflow: hidden;
+  background-image: radial-gradient(#93a5cf,#e4efe9)
 }
 header{
   position: relative;
@@ -14,7 +15,7 @@ header{
   border: 1px solid;
   height : 88vh;
   width: 8vw;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-left: 1rem;
   border-radius:30px;
 }
@@ -22,7 +23,7 @@ header{
   border : 1px solid;
   height: 88vh;
   width : 80vw;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-left: 1rem;
   border-radius:30px;
 }
@@ -30,7 +31,7 @@ header{
   border : 1px solid;
   height : 88vh;
   width: 8vw;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   border-radius:30px;
@@ -97,7 +98,7 @@ animation-name: board;
 .Layout{
   width: 100vw;
   height : 100vh;
-  background-color: #001f3f;
+  background-image: linear-gradient(#001f3f,#596164);
   position:absolute;
   left: 0px;
   top:0px;
@@ -110,7 +111,7 @@ animation-name: board;
 .Layout_hidden{
   width: 100vw;
   height : 100vh;
-  background-color: #001f3f;
+  background-image: linear-gradient(#001f3f,#596164);
   position:absolute;
   left: 0px;
   top:0px;
@@ -206,6 +207,21 @@ animation-name: board;
   left: 50%;
   transform: translate(-50%, -50%);
   }
+  #btn_pause{
+    border-radius:50px;
+    height: 3rem;
+    width: 3rem;
+  }
+  #score{
+    border-radius:50px;
+    height: 3rem;
+    width: 3rem;
+  }
+  #stage{
+    border-radius:50px;
+    height: 3rem;
+    width: 3rem;
+  }
 
   .hidden {
     visibility: hidden;
@@ -219,6 +235,28 @@ animation-name: board;
     left: 50%;
     transform: translate(-50%, -50%);
     }
-/* #healthBar {
-  width : 20rem;
-} */
+    #healthBar{
+    height : 2rem;
+    position: relative;
+    float:left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+    #all_button{
+    position: absolute;
+    float:right;
+    top: 50%;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    }
+    #namePlayerUI{
+      position: absolute;
+      float:right;
+      top: 50%;
+      left: 94%;
+      transform: translate(-50%, -50%);
+      border-radius:50px;
+      height: 3rem;
+      width: 3rem;
+    }

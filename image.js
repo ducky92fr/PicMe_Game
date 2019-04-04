@@ -4,6 +4,7 @@ const arrayImages2 =[];
 const arrayImages3 =[];
 const arrayImages4 =[];
 const arrayImages5 =[];
+let trackBestPlayer =[{name:"Duc",score:200},{name:"Duc",score:150}];
 
 
 // const arrayImages1 
@@ -24,5 +25,5 @@ function getRandomInt(max) {
 // for(let i =0 ;i<9;i++){ arrayImages1[i] = arrayImages[getRandomInt(arrayImages.length)]}
   
 
-export {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt}
+export {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt,trackBestPlayer}
 

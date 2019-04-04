@@ -1,9 +1,9 @@
 //Level 1
-import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt} from './image.js'
+import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5,getRandomInt,trackBestPlayer} from './image.js'
 const btnStart = document.querySelector('#btn_start');
 const btnPause = document.querySelector('#btn_pause')
 const btnDemo = document.querySelector('#btn_demo');
-// const btnRestart = document.querySelector('#btn_restart')
+const btnBack = document.querySelector('#btn_back')
 const btnMenu = document.querySelector('#btn_menu')
 const btnQuit = document.querySelector('#btn_quit')
 const timer = document.querySelector('#countdown');
@@ -11,6 +11,7 @@ const pageCover = document.querySelector('.Layout');
 const pagePause =document.querySelector('#Layout2')
 const pageEndGame =document.querySelector('#Layout1')
 const name = document.querySelector('#inputName');
+const namePlayer = document.querySelector('#namePlayerUI')
 const labelInput = document.querySelector('#name');
 const score = document.querySelector('#score');
 const healthBar = document.querySelector('#healthBar');
@@ -27,9 +28,9 @@ class Game {
     this.health = 100,
     this.level = [3,4,5,6,6],
     this.currLevel = 1,
-    this.durationTurn =[6000,5000,3500,3000,2000]
+    this.durationTurn =[3000,5000,3500,3000,2000]
     this.scoreControl=[5,10,15,20,25],
-    this.healthControl =[5,10,15,15,20],
+    this.healthControl =[30,20,20,25,30],
     this.allArrayImage =[arrayImages1,arrayImages2,arrayImages3,arrayImages4,arrayImages5],
     this.nextRound,
     this.timerCountdown
@@ -39,7 +40,7 @@ class Game {
     this.arrayImageUpdate();
     this.createGrid();
     this.updateNodeList();
-
+    namePlayer.textContent =name.value.toString().charAt(0);
     setTimeout(()=>{ pageCover.className ="Layout_hidden" ; timer.id ="countdown" },5000);
 
     btnDemo.classList.add("hidden");
@@ -59,22 +60,27 @@ class Game {
   }
   pauseGame =()=>{
     pagePause.classList.remove("hidden")
+    clearInterval(this.nextRound);
+  }
+  backGame =()=>{
+    this.arrayImageUpdate();
+    this.createGrid();
+    this.updateNodeList();
+    pagePause.classList.add("hidden")
+    this.startGame();
   }
 
   afterEachTurn =()=> {
     this.levelControl();
     this.updateNodeList();
-    // this.scoreTrack += this.scoreControl[this.currLevel-1];
     if(winTurn === false){
       if(this.health - this.healthControl[this.currLevel-1] <= 0){ 
-        this.health = 0
+        this.checkEndGame()
         } else(this.health -= this.healthControl[this.currLevel-1])
       }
-    const imgContainer = document.querySelector('.images_container');
-    if(this.health <25){this.checkEndGame()};
     this.updateUI();
-    this.addImages();
     this.changeSourcePictureArea();
+    this.addImages();
     winTurn = false;
   }
   changeSourcePictureArea =()=> {
@@ -90,6 +96,8 @@ class Game {
     while (tapis.firstChild) { tapis.removeChild(tapis.firstChild);}
     tapis.insertAdjacentHTML('afterbegin',markup)
     const durationAnimation = (this.durationTurn[this.currLevel-1]/1000).toString()+"s"
+    console.log(durationAnimation)
+    console.log(this.durationTurn[this.currLevel-1])
     document.querySelector('.images_container').style.animationDuration =durationAnimation;
   }
 
@@ -111,12 +119,9 @@ class Game {
     else {timer.textContent =  "READY"}
     }
   checkEndGame=()=>{
-    setInterval(()=>{
-      if(this.health === 0){
+        this.trackBestPlayer();
         clearInterval(this.nextRound);
-        pageEndGame.classList.remove('hidden')
-      }
-    },50);
+        pageEndGame.classList.remove('hidden');
   }
 
   createGrid =()=> {
@@ -158,6 +163,18 @@ class Game {
     imagePictureArea = document.querySelectorAll('.grid_image');
     for(let i =0; i < imagePictureArea.length; i++){imagePictureArea[i].onclick =this.playerSelectImage}
   }
+  trackBestPlayer=()=>{
+    const player ={
+      name: `${name.value === "" ? "Unknown": name.value}`,
+      score: this.scoreTrack
+    }
+    
+    const UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem("trackBestPlayer"))
+    if(UpdatedArrayBestPlayer ==null) UpdatedArrayBestPlayer =[];
+    UpdatedArrayBestPlayer.push(player)
+    localStorage.setItem("trackBestPlayer",JSON.stringify(UpdatedArrayBestPlayer))
+    console.log(localStorage.getItem("trackBestPlayer"))
+  }
 }
 
 
@@ -165,5 +182,6 @@ const gameOfficial  = new Game()
 btnStart.onclick = gameOfficial.readyPhase;
 // btnRestart.onclick = gameOfficial.readyPhase;
 btnPause.onclick = gameOfficial.pauseGame;
+btnBack.onclick = gameOfficial.backGame;
 btnMenu.onclick = window.location.reload.bind(window.location);
 btnQuit.onclick = window.location.reload.bind(window.location)
