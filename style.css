@@ -7,10 +7,8 @@ body {
 header{
   position: relative;
   top:0.8rem;
-  left: 0.3rem;
-  
+  left: 0.3rem; 
 }
-
 #tapis{
   border: 1px solid;
   height : 88vh;
@@ -48,19 +46,14 @@ header{
 @keyframes example {
   from {top: 90vh}
   to {top :0vh}
-  0%{opacity:1}
-  25%{opacity:1}
-  50%{opacity:1}
-  98%{opacity: 0.8}
-  100%{opacity: 0}
 }
 .images{
-margin : 0px auto;
-max-width: 100%;
-max-height: 100%;
-animation :1s;
-opacity :1;
-animation-name: board;
+  margin : 0px auto;
+  max-width: 100%;
+  max-height: 100%;
+  animation :1s;
+  opacity :1;
+  animation-name: board;
 }
 @keyframes board{
   from {opacity:0}
@@ -144,14 +137,14 @@ animation-name: board;
   animation-name: countdown_unhidden;
 }
 @keyframes countdown_unhidden {
-    0%{ opacity: 1}
-    25%{opacity : 1}
-    50%{opacity : 1}
-    75%{opacity :1; color :red}
-    100%{opacity: 0;color :red}
+  0%{ opacity: 1}
+  25%{opacity : 1}
+  50%{opacity : 1}
+  75%{opacity :1; color :red}
+  100%{opacity: 0;color :red}
   
   }
-  #inputName{
+#inputName{
   position: absolute;
   float:left;
   top: 40%;
@@ -163,14 +156,14 @@ animation-name: board;
   height: 5vh;
   }
 
-  #name{
+#name{
   position: absolute;
   float:left;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   }
-  #died{
+#died{
   position: absolute;
   float:left;
   top: 40%;
@@ -178,7 +171,7 @@ animation-name: board;
   transform: translate(-50%, -50%);
 }
 
-  .text{
+.text{
   position: absolute;
   float:left;
   top: 40%;
@@ -186,82 +179,82 @@ animation-name: board;
   transform: translate(-50%, -50%);
 }
   
-  #btn_demo{
+#btn_demo{
   position: absolute;
   float:left;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   }
-  #btn_menu{
+#btn_menu{
   position: absolute;
   float:left;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   }
-  #btn_quit{
+#btn_quit{
   position: absolute;
   float:left;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   }
-  #btn_pause{
-    border-radius:50px;
-    height: 3rem;
-    width: 3rem;
+#btn_pause{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
   }
-  #btn_quit1{
-    border-radius:50px;
-    height: 3rem;
-    width: 3rem;
+#btn_quit1{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
   }
-  #score{
-    border-radius:50px;
-    height: 3rem;
-    width: 3rem;
+#score{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
   }
-  #stage{
-    border-radius:50px;
-    height: 3rem;
-    width: 3rem;
+#stage{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
   }
 
-  .hidden {
-    visibility: hidden;
+.hidden {
+  visibility: hidden;
   }
-  #imgfunny{
-    max-width: 30%;
-    max-height: 20%;
-    position: absolute;
-    float:left;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-    #healthBar{
-    height : 2rem;
-    position: relative;
-    float:left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-    #all_button{
-    position: absolute;
-    float:right;
-    top: 50%;
-    left: 56%;
-    transform: translate(-50%, -50%);
-    }
-    #namePlayerUI{
-      position: absolute;
-      float:right;
-      top: 50%;
-      left: 94%;
-      transform: translate(-50%, -50%);
-      border-radius:50px;
-      height: 3rem;
-      width: 3rem;
-    }
+#imgfunny{
+  max-width: 30%;
+  max-height: 20%;
+  position: absolute;
+  float:left;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#healthBar{
+  height : 2rem;
+  position: relative;
+  float:left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#all_button{
+  position: absolute;
+  float:right;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  }
+#namePlayerUI{
+  position: absolute;
+  float:right;
+  top: 50%;
+  left: 94%;
+  transform: translate(-50%, -50%);
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
