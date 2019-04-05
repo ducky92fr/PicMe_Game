@@ -88,8 +88,8 @@ header{
 }
 .cell {
   border-radius:35px;
-  width :100px;
-  height: 100px;
+  width :6.25rem;
+  height: 6.25rem;
 }
 
 .layout{
