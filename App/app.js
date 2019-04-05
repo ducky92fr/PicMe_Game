@@ -20,8 +20,8 @@ class Game {
   }
 
   readyPhase =()=> {
+    if(localStorage.getItem('trackBestPlayer') !== null){this.topPlayer()}
     audioClick.play()
-    this.topPlayer()
     this.demoNStart()
     setTimeout(this.startGame,7000)
   }
@@ -164,7 +164,7 @@ class Game {
     }
     
     let UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem('trackBestPlayer'))
-    if(UpdatedArrayBestPlayer ==null) UpdatedArrayBestPlayer =[];
+    if(UpdatedArrayBestPlayer == null) UpdatedArrayBestPlayer =[];
     UpdatedArrayBestPlayer.push(player)
     const newArrayBestPlayer = UpdatedArrayBestPlayer.sort((a,b)=>{
       if(a.score > b.score) return -1
