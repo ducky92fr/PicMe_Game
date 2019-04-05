@@ -116,7 +116,7 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='./../App/check.png'
+      event.target.src ='./../App/Check.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
