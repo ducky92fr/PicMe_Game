@@ -20,7 +20,6 @@ class Game {
   }
 
   readyPhase =()=> {
-    if(localStorage.getItem('trackBestPlayer') !== null){this.topPlayer()}
     audioClick.play()
     this.demoNStart()
     setTimeout(this.startGame,7000)
@@ -31,11 +30,13 @@ class Game {
     this.addImages()
     this.nextRound = setInterval(this.afterEachTurn,1800)
   }
+
   pauseGame =()=>{
     audioClick.play()
     pagePause.classList.remove('hidden')
     clearInterval(this.nextRound);
   }
+
   backGame =()=>{
     audioClick.play()
     this.arrayImageUpdate();
@@ -47,6 +48,7 @@ class Game {
 
   checkEndGame=()=>{
     this.trackBestPlayer()
+    this.topPlayer()
     clearInterval(this.nextRound)
     pageEndGame.classList.remove('hidden')
   } 
