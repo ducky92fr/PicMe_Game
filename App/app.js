@@ -21,7 +21,6 @@ class Game {
 
   readyPhase =()=> {
     audioClick.play()
-    this.topPlayer()
     this.demoNStart()
     setTimeout(this.startGame,7000)
   }
@@ -31,11 +30,13 @@ class Game {
     this.addImages()
     this.nextRound = setInterval(this.afterEachTurn,1800)
   }
+
   pauseGame =()=>{
     audioClick.play()
     pagePause.classList.remove('hidden')
     clearInterval(this.nextRound);
   }
+
   backGame =()=>{
     audioClick.play()
     this.arrayImageUpdate();
@@ -47,6 +48,7 @@ class Game {
 
   checkEndGame=()=>{
     this.trackBestPlayer()
+    this.topPlayer()
     clearInterval(this.nextRound)
     pageEndGame.classList.remove('hidden')
   } 
@@ -114,7 +116,7 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='../images_bank/online-booking-checkpoint-choice-accept-512.png'
+      event.target.src ='./../App/check.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
@@ -164,7 +166,7 @@ class Game {
     }
     
     let UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem('trackBestPlayer'))
-    if(UpdatedArrayBestPlayer ==null) UpdatedArrayBestPlayer =[];
+    if(UpdatedArrayBestPlayer == null) UpdatedArrayBestPlayer =[];
     UpdatedArrayBestPlayer.push(player)
     const newArrayBestPlayer = UpdatedArrayBestPlayer.sort((a,b)=>{
       if(a.score > b.score) return -1
@@ -172,17 +174,18 @@ class Game {
       if(a.score = b.score) return 0
     })
     localStorage.setItem('trackBestPlayer',JSON.stringify(newArrayBestPlayer))
-    console.log(localStorage.getItem('trackBestPlayer'))
   }
+
   topPlayer =()=>{
-    const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'))
-    console.dir(arrayTopPlayer)
+    const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'));
+    if(arrayTopPlayer != null){
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
       ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
+      }}
   }
-  }
+
   countdown =()=> {
       if(timer.textContent >1){ timer.textContent = Number(timer.textContent) - 1}
       else {timer.textContent =  'READY'}

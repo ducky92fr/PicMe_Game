@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d ./"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bulma": "^0.7.4"
+    "bulma": "^0.7.4",
+    "gh-pages": "^2.0.1"
   }
 }
