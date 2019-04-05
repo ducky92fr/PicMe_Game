@@ -116,7 +116,7 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='./online-booking-checkpoint-choice-accept-512.png'
+      event.target.src ='./../App/check.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
@@ -178,8 +178,6 @@ class Game {
 
   topPlayer =()=>{
     const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'));
-    console.log(arrayTopPlayer);
-    
     if(arrayTopPlayer != null){
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
