@@ -116,7 +116,7 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='./../App/check.png'
+      event.target.src ='https://www.onlygfx.com/wp-content/uploads/2018/09/4-comic-check-mark-1.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
