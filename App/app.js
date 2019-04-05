@@ -1,8 +1,10 @@
 import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,getRandomInt,trackBestPlayer} from './image.js'
-import {btnStart,btnPause,btnDemo,btnBack,btnMenu,btnQuit,btnQuitInGame,timer,pageCover,
-        pagePause,pageEndGame,name,namePlayer,labelInput,score,
-        healthBar,board,topPlayer,audioFalse,audioTrue,audioClick,allButton,yourStage,
-        currArrayImages,imagePictureArea,trackImageClicked,winTurn} from './base.js'
+import {btnStart,btnPause,btnDemo,btnBack,btnMenu,btnQuit,btnQuitInGame,timer,pageCover,pagePause,pageEndGame,
+        name,namePlayer,labelInput,score,healthBar,board,topPlayer,audioFalse,audioTrue,audioClick,allButton,yourStage} from './base.js'
+let currArrayImages
+let imagePictureArea
+let trackImageClicked
+let winTurn = false
 
 class Game {
   constructor(){
@@ -27,7 +29,7 @@ class Game {
   startGame =()=> {
     clearInterval(this.timerCountdown)
     this.addImages()
-    this.nextRound = setInterval(this.afterEachTurn,2000)
+    this.nextRound = setInterval(this.afterEachTurn,1800)
   }
   pauseGame =()=>{
     audioClick.play()
@@ -65,7 +67,7 @@ class Game {
     this.createGrid()
     this.updateNodeList()
     name.value == '' ? namePlayer.textContent = 'UnK' : namePlayer.textContent = name.value.toString().charAt(0)
-    setTimeout(()=>{ pageCover.className ='Layout_hidden' ; timer.id = 'countdown' },5000)
+    setTimeout(()=>{ pageCover.className ='layout_hidden' ; timer.id = 'countdown' },5000)
     this.timerCountdown = setInterval(this.countdown,1000)
     btnDemo.classList.add('hidden')
     btnStart.classList.add('hidden')
@@ -161,7 +163,7 @@ class Game {
       score: this.scoreTrack
     }
     
-    const UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem('trackBestPlayer'))
+    let UpdatedArrayBestPlayer = JSON.parse(localStorage.getItem('trackBestPlayer'))
     if(UpdatedArrayBestPlayer ==null) UpdatedArrayBestPlayer =[];
     UpdatedArrayBestPlayer.push(player)
     const newArrayBestPlayer = UpdatedArrayBestPlayer.sort((a,b)=>{
@@ -174,16 +176,17 @@ class Game {
   }
   topPlayer =()=>{
     const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'))
+    console.dir(arrayTopPlayer)
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
       ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
-    }
-    countdown =()=> {
+  }
+  }
+  countdown =()=> {
       if(timer.textContent >1){ timer.textContent = Number(timer.textContent) - 1}
       else {timer.textContent =  'READY'}
       }
-  }
 }
 
 const gameOfficial  = new Game()

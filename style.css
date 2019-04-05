@@ -1,13 +1,13 @@
 body {
   height: 100vh;
-  width:99vw;
+  width:100vw;
   overflow: hidden;
   background-image: radial-gradient(#93a5cf,#e4efe9)
 }
 header{
   position: relative;
   top:0.8rem;
-  left: 0.3rem; 
+  left: 1.5rem;
 }
 #tapis{
   border: 1px solid;
@@ -31,7 +31,6 @@ header{
   width: 8vw;
   margin-top: 1.5rem;
   margin-left: 1rem;
-  margin-right: 1rem;
   border-radius:30px;
 }
 .images_container{
@@ -39,7 +38,7 @@ header{
   max-height: 100%;
   position: relative;
   animation-name: example;
-  animation-duration: 2.5s;  
+  animation-duration: 1.8s;  
   animation-fill-mode: forwards;
   margin : 0px auto;
 }
@@ -93,7 +92,7 @@ header{
   height: 100px;
 }
 
-.Layout{
+.layout{
   width: 100vw;
   height : 100vh;
   background-image: linear-gradient(#001f3f,#596164);
@@ -106,7 +105,7 @@ header{
   justify-content: center;
 
 }
-.Layout_hidden{
+.layout_hidden{
   width: 100vw;
   height : 100vh;
   background-image: linear-gradient(#001f3f,#596164);
@@ -263,11 +262,18 @@ header{
   height: 3rem;
   width: 3rem;
   }
-  .topPlayer{
-    border : 1px solid;
-    border-radius: 60px;
-    margin-top: 2rem;
-    width: 100%;
-    height: 3rem;
-    background-image: linear-gradient(#cfd9df,#cfd9df)
+.topPlayer{
+  border : 1px solid;
+  border-radius: 60px;
+  margin-top: 2rem;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem; 
+  background-image: linear-gradient(#cfd9df,#cfd9df)
   }
+#container{
+  position: relative;
+  left: 1.1rem;
+}
