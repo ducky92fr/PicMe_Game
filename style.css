@@ -1,0 +1,279 @@
+body {
+  height: 100vh;
+  width:100vw;
+  overflow: hidden;
+  background-image: radial-gradient(#93a5cf,#e4efe9)
+}
+header{
+  position: relative;
+  top:0.8rem;
+  left: 1.5rem;
+}
+#tapis{
+  border: 1px solid;
+  height : 88vh;
+  width: 8vw;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  border-radius:30px;
+}
+#picture_are{
+  border : 1px solid;
+  height: 88vh;
+  width : 80vw;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  border-radius:30px;
+}
+#settingGame{
+  border : 1px solid;
+  height : 88vh;
+  width: 8vw;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  border-radius:30px;
+}
+.images_container{
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  animation-name: example;
+  animation-duration: 1.8s;  
+  animation-fill-mode: forwards;
+  margin : 0px auto;
+}
+@keyframes example {
+  from {top: 90vh}
+  to {top :0vh}
+  25%{opacity: 1}
+  50%{opacity: 1}
+  75%{opacity: 1}
+  95%{opacity: 0.8}
+  100%{opacity: 0}
+}
+.images{
+  margin : 0px auto;
+  max-width: 100%;
+  max-height: 100%;
+  animation :1s;
+  opacity :1;
+  animation-name: board;
+}
+@keyframes board{
+  from {opacity:0}
+  to {opacity:1}
+}
+.grid_image{
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer
+  }
+
+/* Grid */
+#board {
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.cell:nth-child(even) {
+  background: whitesmoke;
+}
+.cell:nth-child(odd) {
+  background: lightgray;
+}
+.cell {
+  border-radius:35px;
+  width :100px;
+  height: 100px;
+}
+
+.layout{
+  width: 100vw;
+  height : 100vh;
+  background-image: linear-gradient(#001f3f,#596164);
+  position:absolute;
+  left: 0px;
+  top:0px;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.layout_hidden{
+  width: 100vw;
+  height : 100vh;
+  background-image: linear-gradient(#001f3f,#596164);
+  position:absolute;
+  left: 0px;
+  top:0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  animation-duration: 3s;  
+  animation-name: layout_hidden;
+  transition-delay: 2.5s;
+}
+@keyframes layout_hidden {
+  0%{ opacity: 1}
+  100%{opacity: 0}
+}
+
+#countdown{
+  visibility: hidden;
+}
+#countdown_unhidden{
+  position: absolute;
+  float:left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  font-weight: bold;
+  font-size: 200px;
+  animation-duration: 5s;  
+  animation-name: countdown_unhidden;
+}
+@keyframes countdown_unhidden {
+  0%{ opacity: 1}
+  25%{opacity : 1}
+  50%{opacity : 1}
+  75%{opacity :1; color :red}
+  100%{opacity: 0;color :red}
+  
+  }
+#inputName{
+  position: absolute;
+  float:left;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #001f3f;
+  border-radius: 4px;
+  width:20vw;
+  height: 5vh;
+  }
+
+#name{
+  position: absolute;
+  float:left;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#died{
+  position: absolute;
+  float:left;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text{
+  position: absolute;
+  float:left;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+#btn_demo{
+  position: absolute;
+  float:left;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#btn_menu{
+  position: absolute;
+  float:left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#btn_quit{
+  position: absolute;
+  float:left;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#btn_pause{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
+#btn_quit1{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
+#score{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
+#stage{
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
+
+.hidden {
+  visibility: hidden;
+  }
+#imgfunny{
+  max-width: 30%;
+  max-height: 20%;
+  position: absolute;
+  float:left;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#healthBar{
+  height : 2rem;
+  position: relative;
+  float:left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+#all_button{
+  position: absolute;
+  float:right;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  }
+#namePlayerUI{
+  position: absolute;
+  float:right;
+  top: 50%;
+  left: 94%;
+  transform: translate(-50%, -50%);
+  border-radius:50px;
+  height: 3rem;
+  width: 3rem;
+  }
+.topPlayer{
+  border : 1px solid;
+  border-radius: 60px;
+  margin-top: 2rem;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem; 
+  background-image: linear-gradient(#cfd9df,#cfd9df)
+  }
+#container{
+  position: relative;
+  left: 1.1rem;
+}

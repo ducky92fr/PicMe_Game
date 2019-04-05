@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script src = "./App/app.js" type = "module"></script>
+  <script src = "./App/base.js" type ="module"></script>
+</head>
+<body >
+  <header class ='columns'>
+    <div class ='column is-one-quarter'><progress class ='progress is-large is-danger' id="healthBar" value="100" max="100"></progress></div>
+    
+    <div class ='column is-one-quarter' id="all_button">
+      <button class='button is-warning is-medium' id="stage">L <span id="your_stage">1</span></button>
+      <button class='button is-info is-medium' id="score">00</button>
+      <button class='button is-danger  is-small' id="btn_quit1">MENU</button>
+      <button class='button is-danger  is-small' id="btn_pause">PAUSE</button>
+      
+    </div>
+
+    <div class ='column is-one-quarter' id="namePlayer"></div>
+        <button class='button is-primary is-medium' id="namePlayerUI">D</button>
+    </div>
+  </header>
+  
+  <div class = 'columns' id="container">
+    <div class ='column is-1 has-background-light' id = 'tapis'>
+    </div>
+    
+    <div class ='column is-7 has-background-light' id = 'picture_are'>
+        <div id="board">
+        </div>
+    </div>
+    <div class ='column is-1 has-text-centered has-background-light' id = 'settingGame'>
+      <div class="has-text-danger is-size-4 has-text-weight-bold">TOP 5</div>
+      <div class = "topPlayer has-text-info has-text-weight-semibold">D 250</div>
+      <div class = "topPlayer has-text-info has-text-weight-semibold">S 240</div>
+      <div class = "topPlayer has-text-info has-text-weight-semibold">G 200</div>
+      <div class = "topPlayer has-text-info has-text-weight-semibold">D 100</div>
+      <div class = "topPlayer has-text-info has-text-weight-semibold">Y 100</div>
+    </div>
+  </div>
+
+ <div class ="layout" >
+   <div class ='has-text-warning is-size-2' id ="name">GIVE ME YOUR NAME PLSSS!</div>
+    <input id ="inputName" type="text">
+    <button class="button is-primary is-rounded is-large" id="btn_start">START</button>
+    <button class="button is-primary is-rounded is-large" id="btn_demo">DEMO FOR NOOB</button>
+    <img id ="imgfunny" src="./images_bank/Lol-Face-Meme-PNG.png" alt="">
+ </div>
+ <div class ="has-text-primary" id = 'countdown'>3</div>
+
+  <div class ="layout hidden" id ="layout2">
+      <div class ='has-text-warning is-size-2 text'>PAUSED</div>
+      <button class="button is-primary is-rounded is-large" id="btn_back">BACK</button>
+      <button class="button is-primary is-rounded is-large" id="btn_quit">QUIT</button>
+      <img id ="imgfunny" src="./images_bank/Lol-Face-Meme-PNG.png" alt="">
+    </div>
+    <div class ="has-text-primary" id = 'countdown'>3</div>
+ <div class ="layout hidden" id ="layout1">
+    <div class ='has-text-warning is-size-2 text'>YOU DIED</div>
+     <!-- <button class="button is-primary is-rounded is-large" id="btn_restart">RESTART</button> -->
+     <button class="button is-primary is-rounded is-large " id="btn_menu">PLAY AGAIN</button>
+     <img id ="imgfunny" src="./images_bank/Lol-Face-Meme-PNG.png" alt="">
+  </div>
+  <audio controls autoplay loop>
+    <source src="./Sound effect/sound game.mov" type="video/mp4">
+  </audio>
+</body>
+</html>
