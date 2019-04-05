@@ -21,9 +21,9 @@ class Game {
 
   readyPhase =()=> {
     audioClick.play()
-    // const setFirstPlayer =[{name:"Duc",score :200}]
-    // localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer))
-    // console.log(JSON.parse(localStorage.getItem('trackBestPlayer'))[0].name)
+    const setFirstPlayer =[{name:"Duc",score :200}]
+    localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer))
+    console.log(JSON.parse(localStorage.getItem('trackBestPlayer'))[0].name)
     this.demoNStart()
     this.topPlayer()
     setTimeout(this.startGame,7000)
