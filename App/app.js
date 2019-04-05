@@ -20,7 +20,7 @@ class Game {
 
   readyPhase =()=> {
     const setFirstPlayer =[{name:"Duc",score :200}]
-    localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer)
+    localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer))
     audioClick.play()
     this.demoNStart()
     this.topPlayer()
