@@ -21,7 +21,11 @@ class Game {
 
   readyPhase =()=> {
     audioClick.play()
+    // const setFirstPlayer =[{name:"Duc",score :200}]
+    // localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer))
+    // console.log(JSON.parse(localStorage.getItem('trackBestPlayer'))[0].name)
     this.demoNStart()
+    this.topPlayer()
     setTimeout(this.startGame,7000)
   }
 
@@ -177,8 +181,9 @@ class Game {
 
   topPlayer =()=>{
     const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'));
+    const numberToLoop = arrayTopPlayer.length >= topPlayer.length ? 5:arrayTopPlayer.length;
     if(arrayTopPlayer != null){
-    for(let i=0;i<topPlayer.length;i++) {
+    for(let i=0;i<numberToLoop;i++) {
       topPlayer[i].textContent = `
       ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
