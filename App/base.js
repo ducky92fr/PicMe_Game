@@ -1,0 +1,27 @@
+export const btnStart = document.querySelector('#btn_start')
+export const btnPause = document.querySelector('#btn_pause')
+export const btnDemo = document.querySelector('#btn_demo')
+export const btnBack = document.querySelector('#btn_back')
+export const btnMenu = document.querySelector('#btn_menu')
+export const btnQuit = document.querySelector('#btn_quit')
+export const btnQuitInGame = document.querySelector('#btn_quit1')
+export const timer = document.querySelector('#countdown')
+export const pageCover = document.querySelector('.Layout')
+export const pagePause =document.querySelector('#Layout2')
+export const pageEndGame =document.querySelector('#Layout1')
+export const name = document.querySelector('#inputName')
+export const namePlayer = document.querySelector('#namePlayerUI')
+export const labelInput = document.querySelector('#name')
+export const score = document.querySelector('#score')
+export const healthBar = document.querySelector('#healthBar')
+export const board = document.querySelector('#board')
+export const topPlayer = document.querySelectorAll('.topPlayer')
+export const audioFalse = new Audio('./Sound effect/Wrong-answer-sound-effect.mp3')
+export const audioTrue = new Audio('./Sound effect/Bing-sound.mp3')
+export const audioClick = new Audio('./Sound effect/Button-click-sound-effect.mp3')
+export const allButton = document.getElementsByTagName('button')
+export const yourStage = document.querySelector('#your_stage')
+export let currArrayImages=[]
+export let imagePictureArea
+export let trackImageClicked
+export let winTurn = false

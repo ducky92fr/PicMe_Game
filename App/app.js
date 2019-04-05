@@ -1,31 +1,8 @@
 import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,getRandomInt,trackBestPlayer} from './image.js'
-const btnStart = document.querySelector('#btn_start')
-const btnPause = document.querySelector('#btn_pause')
-const btnDemo = document.querySelector('#btn_demo')
-const btnBack = document.querySelector('#btn_back')
-const btnMenu = document.querySelector('#btn_menu')
-const btnQuit = document.querySelector('#btn_quit')
-const btnQuitInGame = document.querySelector('#btn_quit1')
-const timer = document.querySelector('#countdown')
-const pageCover = document.querySelector('.Layout')
-const pagePause =document.querySelector('#Layout2')
-const pageEndGame =document.querySelector('#Layout1')
-const name = document.querySelector('#inputName')
-const namePlayer = document.querySelector('#namePlayerUI')
-const labelInput = document.querySelector('#name')
-const score = document.querySelector('#score')
-const healthBar = document.querySelector('#healthBar')
-const board = document.querySelector('#board')
-const topPlayer = document.querySelectorAll('.topPlayer')
-const audioFalse = new Audio('./Sound effect/Wrong-answer-sound-effect.mp3')
-const audioTrue = new Audio('./Sound effect/Bing-sound.mp3')
-const audioClick = new Audio('./Sound effect/Button-click-sound-effect.mp3')
-const allButton = document.getElementsByTagName('button')
-const yourStage = document.querySelector('#your_stage')
-let currArrayImages=[]
-let imagePictureArea
-let trackImageClicked
-let winTurn = false
+import {btnStart,btnPause,btnDemo,btnBack,btnMenu,btnQuit,btnQuitInGame,timer,pageCover,
+        pagePause,pageEndGame,name,namePlayer,labelInput,score,
+        healthBar,board,topPlayer,audioFalse,audioTrue,audioClick,allButton,yourStage,
+        currArrayImages,imagePictureArea,trackImageClicked,winTurn} from './base.js'
 
 class Game {
   constructor(){
@@ -66,6 +43,12 @@ class Game {
     this.startGame();
   }
 
+  checkEndGame=()=>{
+    this.trackBestPlayer()
+    clearInterval(this.nextRound)
+    pageEndGame.classList.remove('hidden')
+  } 
+
   demoGame =()=>{
     audioClick.play()
     btnPause.classList.add('hidden')
@@ -76,11 +59,12 @@ class Game {
     setTimeout(()=> {setInterval(this.changeSourcePictureArea,4000)},7000)
     setTimeout(()=> {setInterval(this.addImages,4000)},7000)
   }
+
   demoNStart=()=>{
     this.arrayImageUpdate()
     this.createGrid()
     this.updateNodeList()
-    name.value == '' ? namePlayer.textContent = 'UK' : namePlayer.textContent = name.value.toString().charAt(0)
+    name.value == '' ? namePlayer.textContent = 'UnK' : namePlayer.textContent = name.value.toString().charAt(0)
     setTimeout(()=>{ pageCover.className ='Layout_hidden' ; timer.id = 'countdown' },5000)
     this.timerCountdown = setInterval(this.countdown,1000)
     btnDemo.classList.add('hidden')
@@ -102,14 +86,14 @@ class Game {
     this.updateNodeList()
     this.updateUI()
     this.changeSourcePictureArea()
-    
     winTurn = false
   }
+
   changeSourcePictureArea =()=> {
     for(let i = 0; i < imagePictureArea.length; i++){ imagePictureArea[i].src = currArrayImages[i] }
     this.addImages()
   }
-  
+
   addImages =()=> {
     const markup =`
       <div class = 'images_container'>
@@ -128,22 +112,12 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='./online-booking-checkpoint-choice-accept-512.png'
+      event.target.src ='../images_bank/online-booking-checkpoint-choice-accept-512.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
     console.log(trackImageClicked)
     }
-
-  countdown =()=> {
-    if(timer.textContent >1){ timer.textContent = Number(timer.textContent) - 1}
-    else {timer.textContent =  'READY'}
-    }
-  checkEndGame=()=>{
-        this.trackBestPlayer()
-        clearInterval(this.nextRound)
-        pageEndGame.classList.remove('hidden')
-  }
 
   createGrid =()=> {
     if(board.innerHTML != ''){board.innerHTML = ''}
@@ -205,13 +179,17 @@ class Game {
       ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
     }
+    countdown =()=> {
+      if(timer.textContent >1){ timer.textContent = Number(timer.textContent) - 1}
+      else {timer.textContent =  'READY'}
+      }
   }
 }
 
 const gameOfficial  = new Game()
-function reloadPage(){
-    audioClick.play()
-    setTimeout(()=>{window.location.reload.bind(window.location)()},100)}
+function reloadPage(){ 
+  audioClick.play()
+  setTimeout(()=>{window.location.reload.bind(window.location)()},100)}
 btnStart.onclick = gameOfficial.readyPhase
 btnPause.onclick = gameOfficial.pauseGame
 btnBack.onclick = gameOfficial.backGame
