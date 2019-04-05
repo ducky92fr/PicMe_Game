@@ -19,9 +19,11 @@ class Game {
   }
 
   readyPhase =()=> {
-    this.topPlayer()
+    const setFirstPlayer =[{name:"Duc",score :200}]
+    localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer)
     audioClick.play()
     this.demoNStart()
+    this.topPlayer()
     setTimeout(this.startGame,7000)
   }
 
@@ -48,7 +50,6 @@ class Game {
 
   checkEndGame=()=>{
     this.trackBestPlayer()
-    this.topPlayer()
     clearInterval(this.nextRound)
     pageEndGame.classList.remove('hidden')
   } 
