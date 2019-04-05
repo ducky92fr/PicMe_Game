@@ -19,6 +19,7 @@ class Game {
   }
 
   readyPhase =()=> {
+    this.topPlayer()
     audioClick.play()
     this.demoNStart()
     setTimeout(this.startGame,7000)
