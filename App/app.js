@@ -59,9 +59,9 @@ class Game {
     this.demoNStart();
     setTimeout(()=> {clearInterval(this.timer)},7000)
     setTimeout(this.addImages,7000)
-    setTimeout(()=> {setInterval(this.arrayImageUpdate,4000)},7000);
-    setTimeout(()=> {setInterval(this.changeSourcePictureArea,4000)},7000)
-    setTimeout(()=> {setInterval(this.addImages,4000)},7000)
+    setTimeout(()=> {setInterval(this.arrayImageUpdate,3000)},7000);
+    setTimeout(()=> {setInterval(this.changeSourcePictureArea,3000)},7000)
+    setTimeout(()=> {setInterval(this.addImages,3000)},7000)
   }
 
   demoNStart=()=>{
