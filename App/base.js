@@ -15,7 +15,6 @@ const labelInput = document.querySelector('#name')
 const score = document.querySelector('#score')
 const healthBar = document.querySelector('#healthBar')
 const board = document.querySelector('#board')
-const topPlayer = document.querySelectorAll('.topPlayer')
 const audioFalse = new Audio('./Sound effect/Wrong-answer-sound-effect.mp3')
 const audioTrue = new Audio('./Sound effect/Bing-sound.mp3')
 const audioClick = new Audio('./Sound effect/Button-click-sound-effect.mp3')
@@ -23,4 +22,4 @@ const allButton = document.getElementsByTagName('button')
 const yourStage = document.querySelector('#your_stage')
 export {btnStart,btnPause,btnDemo,btnBack,btnMenu,btnQuit,btnQuitInGame,timer,pageCover,
           pagePause,pageEndGame,name,namePlayer,labelInput,score,
-          healthBar,board,topPlayer,audioFalse,audioTrue,audioClick,allButton,yourStage}
+          healthBar,board,audioFalse,audioTrue,audioClick,allButton,yourStage}

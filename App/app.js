@@ -1,6 +1,7 @@
 import  {arrayImages,arrayImages1,arrayImages2,arrayImages3,getRandomInt,trackBestPlayer} from './image.js'
 import {btnStart,btnPause,btnDemo,btnBack,btnMenu,btnQuit,btnQuitInGame,timer,pageCover,pagePause,pageEndGame,
-        name,namePlayer,labelInput,score,healthBar,board,topPlayer,audioFalse,audioTrue,audioClick,allButton,yourStage} from './base.js'
+        name,namePlayer,labelInput,score,healthBar,board,audioFalse,audioTrue,audioClick,allButton,yourStage} from './base.js'
+const topPlayer = document.querySelectorAll('.topPlayer')
 let currArrayImages
 let imagePictureArea
 let trackImageClicked
@@ -19,9 +20,10 @@ class Game {
   }
 
   readyPhase =()=> {
+    audioClick.play()
     const setFirstPlayer =[{name:"Duc",score :200}]
     localStorage.setItem('trackBestPlayer',JSON.stringify(setFirstPlayer))
-    audioClick.play()
+    this.trackBestPlayer()
     this.demoNStart()
     this.topPlayer()
     setTimeout(this.startGame,7000)
