@@ -116,7 +116,7 @@ class Game {
       this.scoreTrack += 10
       winTurn =true
       this.updateUI()
-      event.target.src ='../images_bank/online-booking-checkpoint-choice-accept-512.png'
+      event.target.src ='./../images_bank/online-booking-checkpoint-choice-accept-512.png'
       audioTrue.play()
 
       } else {audioFalse.play()}
