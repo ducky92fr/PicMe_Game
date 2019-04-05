@@ -5,7 +5,7 @@ let currArrayImages
 let imagePictureArea
 let trackImageClicked
 let winTurn = false
-
+window.location.reload();
 class Game {
   constructor(){
     this.scoreTrack = 0,
