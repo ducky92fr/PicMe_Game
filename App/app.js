@@ -177,7 +177,9 @@ class Game {
   }
 
   topPlayer =()=>{
-    const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'))
+    const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'));
+    console.log(arrayTopPlayer);
+    
     if(arrayTopPlayer != null){
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
