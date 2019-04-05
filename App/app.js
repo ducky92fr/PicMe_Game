@@ -174,17 +174,18 @@ class Game {
       if(a.score = b.score) return 0
     })
     localStorage.setItem('trackBestPlayer',JSON.stringify(newArrayBestPlayer))
-    console.log(localStorage.getItem('trackBestPlayer'))
   }
+
   topPlayer =()=>{
     const arrayTopPlayer =JSON.parse(localStorage.getItem('trackBestPlayer'))
-    console.dir(arrayTopPlayer)
+    if(arrayTopPlayer != null){
     for(let i=0;i<topPlayer.length;i++) {
       topPlayer[i].textContent = `
       ${arrayTopPlayer[i].name.charAt(0)} ${arrayTopPlayer[i].score}
        `
+      }}
   }
-  }
+
   countdown =()=> {
       if(timer.textContent >1){ timer.textContent = Number(timer.textContent) - 1}
       else {timer.textContent =  'READY'}
